@@ -36,9 +36,14 @@ async function removeNote(id) {
 
     await fs.writeFile(notesPath, JSON.stringify(newArray));
 };
-// Test
-// removeNote(1723624998791);
+
+async function printNotes() {
+    const notes = await getNotes();
+    notes.forEach(note => {
+        console.log(note.title, ' ', note.id);   
+    });
+};
 
 module.exports = {
-    addNote, getNotes, removeNote
+    addNote, getNotes, removeNote, printNotes
 }

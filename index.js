@@ -1,6 +1,6 @@
 const yargs = require('yargs');
 const pkg = require('./package.json');
-const {addNote, getNotes, removeNote} = require('./notes.controller');
+const {addNote, getNotes, removeNote, printNotes} = require('./notes.controller');
 const { demandOption } = require('yargs');
 
 yargs.command({
@@ -23,11 +23,12 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe:   'Print all notes',
-    async handler() {
-        const notes = await getNotes();
-        console.log(notes);
+    handler() {
+        printNotes()
     }
-})
+        
+    }
+)
 
 yargs.command({
     command: 'remove',
